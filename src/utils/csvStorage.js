@@ -3,7 +3,7 @@
 //   data/signup.csv  — all registered users
 //   data/login.csv   — login sessions with tokens
 
-const API = 'http://localhost:3001/api';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 const TOKEN_KEY = 'moda_token';     // stores session token in localStorage
 const USER_KEY = 'moda_user';       // stores current user object in localStorage (cache)
 
