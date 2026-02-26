@@ -52,12 +52,25 @@ const Session = mongoose.models.Session || mongoose.model('Session', sessionSche
 
 
 // ── Routes ────────────────────────────────────────────────────────────────────
+function getBody(req) {
+    let body = req.body;
+    if (!body || Object.keys(body).length === 0) {
+        if (req.apiGateway && req.apiGateway.event && req.apiGateway.event.body) {
+            body = req.apiGateway.event.body;
+        }
+    }
+    if (typeof body === 'string') {
+        try { return JSON.parse(body); } catch (e) { }
+    }
+    return body || {};
+}
+
 app.post('/api/signup', async (req, res) => {
     try {
         await connectToDatabase();
-        const { name, email, password } = req.body;
+        const { name, email, password } = getBody(req);
         if (!name || !email || !password) {
-            return res.status(400).json({ error: 'All fields required.' });
+            return res.status(400).json({ error: 'All fields required. Please ensure no fields are empty.' });
         }
 
         const existingUser = await User.findOne({ email });
@@ -82,7 +95,7 @@ app.post('/api/signup', async (req, res) => {
 app.post('/api/login', async (req, res) => {
     try {
         await connectToDatabase();
-        const { email, password } = req.body;
+        const { email, password } = getBody(req);
         if (!email || !password) {
             return res.status(400).json({ error: 'Email and password required.' });
         }
