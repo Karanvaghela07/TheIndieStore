@@ -6,12 +6,16 @@ import serverless from 'serverless-http';
 const app = express();
 
 // ── Middleware ────────────────────────────────────────────────────────────────
-const corsOptions = {
-    origin: '*', // Allow Netlify to access
+app.use(cors({
+    origin: '*',
     credentials: true,
-};
-app.use(cors(corsOptions));
-app.use(express.json());
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-session-token']
+}));
+
+// Manually parse JSON for safety instead of strictly relying on express.json()
+app.use(express.json({ type: ['application/json', 'text/plain'] }));
+app.use(express.urlencoded({ extended: true }));
 
 // ── Database Connection ───────────────────────────────────────────────────────
 // In Netlify, environmental variables are handled automatically via UI Dashboard
@@ -54,14 +58,32 @@ const Session = mongoose.models.Session || mongoose.model('Session', sessionSche
 // ── Routes ────────────────────────────────────────────────────────────────────
 function getBody(req) {
     let body = req.body;
+
+    // Fallback to raw event body (Netlify Serverless Specific)
     if (!body || Object.keys(body).length === 0) {
         if (req.apiGateway && req.apiGateway.event && req.apiGateway.event.body) {
             body = req.apiGateway.event.body;
         }
     }
+
+    // Attempt to defensively parse strings if Netlify didn't format it as JSON
     if (typeof body === 'string') {
-        try { return JSON.parse(body); } catch (e) { }
+        try {
+            body = JSON.parse(body);
+        } catch (e) {
+            // If it's URL encoded (e.g. name=Karan&email=test...), parse it manually
+            const searchParams = new URLSearchParams(body);
+            if (Array.from(searchParams.keys()).length > 0) {
+                body = Object.fromEntries(searchParams);
+            }
+        }
     }
+
+    // Double check if somehow it got double-stringified
+    if (typeof body === 'string') {
+        try { body = JSON.parse(body); } catch (e) { }
+    }
+
     return body || {};
 }
 
