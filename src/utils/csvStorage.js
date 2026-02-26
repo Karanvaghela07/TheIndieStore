@@ -42,8 +42,8 @@ export async function apiSignup(name, email, password) {
     try {
         const res = await fetch(`${API}/signup`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password }),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ name, email, password }).toString(),
         });
         const data = await res.json();
         if (!res.ok) return { success: false, error: data.error || 'Signup failed.' };
@@ -62,8 +62,8 @@ export async function apiLogin(email, password) {
     try {
         const res = await fetch(`${API}/login`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ email, password }).toString(),
         });
         const data = await res.json();
         if (!res.ok) return { success: false, error: data.error || 'Login failed.' };
