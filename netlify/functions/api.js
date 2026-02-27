@@ -108,9 +108,20 @@ function getBody(req) {
 app.post('/api/signup', async (req, res) => {
     try {
         await connectToDatabase();
-        const { name, email, password } = getBody(req);
+        const bodyParseResults = getBody(req);
+        const { name, email, password } = bodyParseResults;
         if (!name || !email || !password) {
-            return res.status(400).json({ error: 'All fields required. Please ensure no fields are empty.' });
+            return res.status(400).json({
+                error: 'All fields required. Please ensure no fields are empty.',
+                debugInfo: {
+                    reqHeaders: req.headers,
+                    reqBodyType: typeof req.body,
+                    reqBody: req.body || null,
+                    eventBodyType: req.apiGateway && req.apiGateway.event ? typeof req.apiGateway.event.body : 'missing',
+                    eventBody: req.apiGateway && req.apiGateway.event ? req.apiGateway.event.body : null,
+                    parsedBody: bodyParseResults,
+                }
+            });
         }
 
         const existingUser = await User.findOne({ email });
@@ -135,9 +146,20 @@ app.post('/api/signup', async (req, res) => {
 app.post('/api/login', async (req, res) => {
     try {
         await connectToDatabase();
-        const { email, password } = getBody(req);
+        const bodyParseResults = getBody(req);
+        const { email, password } = bodyParseResults;
         if (!email || !password) {
-            return res.status(400).json({ error: 'Email and password required.' });
+            return res.status(400).json({
+                error: 'Email and password required.',
+                debugInfo: {
+                    reqHeaders: req.headers,
+                    reqBodyType: typeof req.body,
+                    reqBody: req.body || null,
+                    eventBodyType: req.apiGateway && req.apiGateway.event ? typeof req.apiGateway.event.body : 'missing',
+                    eventBody: req.apiGateway && req.apiGateway.event ? req.apiGateway.event.body : null,
+                    parsedBody: bodyParseResults,
+                }
+            });
         }
 
         const user = await User.findOne({ email });
