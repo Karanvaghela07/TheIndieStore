@@ -119,12 +119,12 @@ const ProductDetail = () => {
                         <div className="pdp-offer-card">
                             <div className="pdp-offer-title">Bank Offer</div>
                             <div className="pdp-offer-desc">Upto ₹1,500 Discount on HDFC Credit Cards.</div>
-                            <a href="#offers">1 offer ></a>
+                            <a href="#offers">1 offer &gt;</a>
                         </div>
                         <div className="pdp-offer-card">
                             <div className="pdp-offer-title">Partner Offers</div>
                             <div className="pdp-offer-desc">Get GST invoice and save up to 28% on business.</div>
-                            <a href="#offers">2 offers ></a>
+                            <a href="#offers">2 offers &gt;</a>
                         </div>
                     </div>
 
