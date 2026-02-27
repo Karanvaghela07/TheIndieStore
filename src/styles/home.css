@@ -824,3 +824,358 @@ body {
 .slider-img {
     object-position: center center;
 }
+
+/* --- LIFESTYLE STORES THEME OVERRIDES --- */
+
+.lifestyle-theme {
+    background-color: #ffffff !important;
+    font-family: 'Inter', sans-serif !important;
+    margin-top: 87px;
+    /* 155px header - 68px global main-content padding */
+}
+
+/* 1. Hero Slider Polish */
+.lifestyle-theme .hero-slider-container {
+    margin-top: 0;
+    /* Sits beneath the yellow strip now */
+    overflow: hidden;
+    position: relative;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lifestyle-theme .hero-slider-container .slider-arrow {
+    background: #fff;
+    color: #111;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+    /* Always visible like Lifestyle */
+    border: none;
+}
+
+.lifestyle-theme .hero-slider-container .slider-arrow.left {
+    left: 30px;
+}
+
+.lifestyle-theme .hero-slider-container .slider-arrow.right {
+    right: 30px;
+}
+
+.lifestyle-hero-overlay {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    color: #fff;
+}
+
+.lifestyle-hero-subtitle {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.lifestyle-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+    .lifestyle-hero-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* 2. Strip Wrapper */
+.lifestyle-strip-wrapper {
+    /* Container for the yellow promo strip */
+    width: 100%;
+}
+
+/* 3. New Category Navigation (11 items) */
+.lifestyle-category-section {
+    width: 100%;
+    background: #fff;
+    /* No border-bottom as we dive right into the yellow strip */
+}
+
+.lifestyle-image-nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem 1.5rem;
+    /* Zero top padding to sit flush against the nav, keep bottom padding before the yellow strip */
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+.lifestyle-image-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.image-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    min-width: 900px;
+    /* Ensure it scrolls on mobile instead of wrapping */
+}
+
+.image-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.image-nav-item:hover {
+    transform: translateY(-2px);
+}
+
+.image-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    /* Slightly rounded square */
+    background: #f7f8f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #111;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.active-text {
+    color: #FAA61A;
+    /* Active category gets orange text */
+}
+
+/* 2B. Yellow Promo Strip */
+.lifestyle-yellow-promo {
+    background: repeating-linear-gradient(-45deg,
+            #FAA61A,
+            #FAA61A 10px,
+            #f59b09 10px,
+            #f59b09 20px);
+    color: #fff;
+    padding: 0.6rem 0;
+    text-align: center;
+}
+
+.promo-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* 4. Deals & Brands Sections */
+.lifestyle-deals-section,
+.lifestyle-brands-section {
+    padding: 2rem 1rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    background: #fff;
+    margin-bottom: 2rem;
+}
+
+/* Section Headers */
+.lifestyle-theme .section-header-commercial h2,
+.lifestyle-theme .ajio-section-header {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #111;
+    text-transform: capitalize;
+    /* Lifestyle uses Title Case often */
+    letter-spacing: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    /* Lifestyle usually aligns left */
+}
+
+.lifestyle-theme .header-line {
+    display: none;
+    /* No gold lines in Lifestyle */
+}
+
+/* 5. Product Scroll Blocks */
+.lifestyle-product-scroll {
+    padding: 2rem 0;
+    background: #fff;
+}
+
+.lifestyle-theme .h-scroll-header h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #111;
+    text-transform: capitalize;
+}
+
+.lifestyle-theme .h-scroll-header {
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lifestyle-theme .h-scroll-btn {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #111;
+    border-radius: 50%;
+    /* standard circle buttons */
+}
+
+.lifestyle-theme .h-scroll-btn:hover {
+    background: #f7f8f7;
+    transform: none;
+}
+
+/* 6. Mid Banners */
+.lifestyle-banner-mid {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 3rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f7f8f7;
+}
+
+.lifestyle-banner-mid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lifestyle-banner-content {
+    position: absolute;
+    bottom: 0;
+    /* Align to bottom for lifestyle banners */
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 6rem 3rem 2.5rem;
+    /* Gradient padding */
+    text-align: center;
+}
+
+.lifestyle-banner-content.right-aligned {
+    /* No right align needed if centered at bottom */
+    left: 0;
+    right: 0;
+}
+
+.lifestyle-banner-content h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.lifestyle-banner-content p {
+    font-family: 'Inter', sans-serif;
+    color: #f0f0f0;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Lifestyle Button (Orange) */
+.lifestyle-btn {
+    background: #FAA61A;
+    /* Lifestyle Orange */
+    color: #fff;
+    border: none;
+    padding: 1rem 3rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    /* Slight rounding */
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.lifestyle-btn:hover {
+    background: #e59416;
+    /* Darker orange */
+}
+
+.lifestyle-btn.solid {
+    background: #FAA61A;
+    color: #fff;
+}
+
+.lifestyle-btn.solid:hover {
+    background: #e59416;
+}
+
+@media (max-width: 768px) {
+    .lifestyle-banner-mid {
+        height: 300px;
+        margin: 2rem 1rem;
+        width: auto;
+    }
+
+    .lifestyle-banner-content {
+        padding: 4rem 1.5rem 1.5rem;
+    }
+
+    .lifestyle-banner-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .lifestyle-theme .section-header-commercial h2,
+    .lifestyle-theme .ajio-section-header {
+        font-size: 1.5rem;
+    }
+}

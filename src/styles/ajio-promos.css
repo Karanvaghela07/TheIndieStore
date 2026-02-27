@@ -139,6 +139,85 @@
     border-radius: 4px;
 }
 
+/* --- LIFESTYLE THEME OVERRIDES --- */
+.lifestyle-theme .ajio-deal-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.lifestyle-theme .ajio-deal-card {
+    border-radius: 12px;
+    box-shadow: none;
+    position: relative;
+    height: 400px;
+    /* Fixed height for uniformity */
+    overflow: hidden;
+}
+
+.lifestyle-theme .ajio-deal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lifestyle-theme .ajio-img-box {
+    height: 100%;
+    aspect-ratio: auto;
+}
+
+.lifestyle-theme .ajio-deal-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%) !important;
+    padding: 3rem 1rem 1.5rem;
+    /* Padding to create the gradient area */
+    color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.lifestyle-theme .ajio-deal-card:hover .ajio-deal-info {
+    transform: none;
+    /* Let the whole card lift instead */
+}
+
+.lifestyle-theme .ajio-deal-info h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.lifestyle-theme .deal-offer-badge {
+    background: transparent;
+    color: #f0f0f0;
+    font-size: 0.9rem;
+    padding: 0;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: capitalize;
+}
+
+@media (max-width: 900px) {
+    .lifestyle-theme .ajio-deal-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lifestyle-theme .ajio-deal-card {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lifestyle-theme .ajio-deal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* 3. BRAND SPOTLIGHT */
 .ajio-brand-section {
@@ -163,12 +242,14 @@
 .brand-img-wrapper {
     width: 100%;
     aspect-ratio: 1/1;
-    border-radius: 50%;
+    border-radius: 16px;
+    /* Soft square instead of circle */
     overflow: hidden;
-    border: 1px solid #eee;
-    padding: 1rem;
-    background: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid transparent;
+    padding: 1.5rem;
+    background: #f7f8f7;
+    /* Very light cool grey */
+    box-shadow: none;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -176,23 +257,25 @@
 }
 
 .brand-img-wrapper img {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
+    mix-blend-mode: multiply;
 }
 
 .ajio-brand-card:hover .brand-img-wrapper {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    /* Premium hover shadow */
     transform: translateY(-5px);
-    border-color: #ddd;
 }
 
 .brand-offer {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     font-family: 'Inter', sans-serif;
     font-weight: 800;
-    color: #e11b23;
-    font-size: 0.9rem;
+    color: #FAA61A;
+    /* Lifestyle Orange */
+    font-size: 0.95rem;
 }
 
 .brand-name {

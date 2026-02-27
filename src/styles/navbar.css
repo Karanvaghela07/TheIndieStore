@@ -1,228 +1,308 @@
-/* Navbar Styles - Souled Store White Theme */
-.navbar {
+/* --- LIFESTYLE STORES NAVBAR STYLE --- */
+
+.lifestyle-header {
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 1000;
-    padding: 0.8rem 0;
     background: #fff;
-    color: #000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
 }
 
-.navbar.scrolled {
-    padding: 0.6rem 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+/* Tier 1: Top Strip */
+.lifestyle-top-strip {
+    background: #111;
+    color: #fff;
+    padding: 6px 0;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
-.nav-container {
+.top-strip-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo {
-    font-family: 'Quicksand', sans-serif;
-    /* Friendly Logo Font */
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #e11b23;
-    /* Souled Store Red Logo */
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
+.top-strip-left,
+.top-strip-right {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 }
 
-.nav-links {
+.top-strip-left span,
+.top-strip-right span {
     display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.top-strip-left span:hover,
+.top-strip-right span:hover {
+    color: #FAA61A;
+}
+
+/* Tier 2: Main Header */
+.lifestyle-main-header {
+    background: #fff;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eaeaea;
+    transition: box-shadow 0.3s ease;
+}
+
+.lifestyle-main-header.sticky-scrolled {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.main-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 2rem;
 }
 
-.nav-link {
-    font-family: 'Nunito', sans-serif;
+.lifestyle-logo {
+    font-family: 'Playfair Display', serif;
+    /* Or keep Inter if strictly needed, but Playfair looks like Lifestyle's serif logo option */
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+/* Search Bar */
+.lifestyle-search-wrapper {
+    flex: 1;
+    max-width: 600px;
+}
+
+.lifestyle-search-form {
+    display: flex;
+    align-items: center;
+    background: #f4f4f4;
+    /* Lifestyle gray */
+    border-radius: 4px;
+    padding: 0.6rem 1rem;
+}
+
+.lifestyle-search-form input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 0 0.8rem;
+    font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
-    font-weight: 700;
-    color: #282c3f;
-    /* Deep Grey */
-    text-transform: uppercase;
-    position: relative;
-    transition: color 0.2s;
+    outline: none;
+    color: #111;
 }
 
-.nav-link:hover {
-    color: #e11b23;
-    /* Hover Red */
+.search-icon {
+    color: #555;
 }
 
-/* Active Indicator */
-.nav-link::after {
-    display: none;
-    /* No underline, just color change */
-}
-
-.nav-icons {
+/* Utils (Right side) */
+.lifestyle-utils {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
-    color: #282c3f;
-}
-
-.icon {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.icon:hover {
-    color: #e11b23;
-}
-
-.cart-icon-wrapper {
-    position: relative;
-}
-
-.cart-count {
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    background: #e11b23;
-    color: white;
-    font-size: 0.7rem;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-family: 'Nunito', sans-serif;
-}
-
-/* Mobile Menu */
-.mobile-only {
-    display: none;
-}
-
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #fff;
-    z-index: 2000;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.mobile-menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 4rem;
-    border-bottom: 2px solid #f5f5f5;
-    padding-bottom: 1rem;
-}
-
-.mobile-links {
-    display: flex;
-    flex-direction: column;
     gap: 1.5rem;
 }
 
-.mobile-link {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1.8rem;
-    color: #111;
-    text-transform: uppercase;
+.lifestyle-auth-btn {
+    background: #FAA61A;
+    /* Lifestyle Orange */
+    color: #fff;
     font-weight: 700;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: background 0.2s;
 }
 
-@media (max-width: 768px) {
-    .desktop-only {
-        display: none;
-    }
-
-    .mobile-only {
-        display: block;
-    }
+.lifestyle-auth-btn:hover {
+    background: #e59416;
 }
 
-/* Search Overlay */
-.search-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    background: #fff;
-    z-index: 2000;
-    padding: 1rem;
+.util-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #111;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.util-item:hover {
+    color: #FAA61A;
+}
+
+.util-icon-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.search-form {
+.util-badge {
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    background: #e11b23;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.util-badge.count {
+    width: 16px;
+    height: 16px;
+    top: -6px;
+    right: -8px;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    border: 1px solid #eaeaec;
-    padding: 0.6rem 1.2rem;
-    border-radius: 25px;
-    /* Pill Search */
-    background: #f5f5f6;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
 }
 
-.search-form input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: #111;
-    font-size: 1rem;
-    font-family: 'Nunito', sans-serif;
+.util-label {
+    font-size: 0.75rem;
     font-weight: 600;
-    outline: none;
 }
 
-.close-search {
-    margin-left: 1rem;
-    color: #555;
-    cursor: pointer;
-    background: none;
-    border: none;
+/* Tier 3: Category Nav */
+.lifestyle-cat-nav {
+    background: #fff;
+    border-bottom: 1px solid #eaeaea;
 }
 
-/* ─── Mobile Responsiveness ─────────────────────────────────────────────── */
-@media (max-width: 768px) {
-    .nav-icons {
-        gap: 0.8rem;
-        /* Tighter gap on nav icons for small phone screens */
+.lifestyle-header .sticky-cat-nav {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Shadow appears on bottom tier */
+}
+
+.cat-nav-container {
+    display: flex;
+    gap: 2rem;
+    padding: 0.8rem 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+
+.cat-nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-nav-link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #111;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.cat-nav-link:hover,
+.cat-nav-link.active {
+    color: #FAA61A;
+}
+
+/* Mobile Overrides */
+.desktop-only {
+    display: flex !important;
+}
+
+.mobile-only {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .desktop-only {
+        display: none !important;
     }
 
-    .logo-link img {
-        height: 50px !important;
-        /* Smaller logo */
+    .mobile-only {
+        display: flex !important;
     }
-}
 
-@media (max-width: 480px) {
-    .search-form {
-        padding: 0.4rem 1rem;
+    .lifestyle-top-strip {
+        display: none;
+        /* Hide top strip on mobile */
+    }
+
+    .main-header-container {
+        padding: 0.5rem 1rem;
+    }
+
+    .lifestyle-logo {
+        font-size: 1.5rem;
+    }
+
+    .lifestyle-utils {
+        gap: 1rem;
+    }
+
+    /* Mobile Sidebar Menu */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 85vw;
+        /* Not full width, slide out drawer style */
+        max-width: 400px;
+        height: 100vh;
+        background: #fff;
+        z-index: 2000;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 10px 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        background: #f4f4f4;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .mobile-auth-section {
+        padding: 1.5rem;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .lifestyle-auth-btn.full-width {
+        display: block !important;
+        text-align: center;
         width: 100%;
+        padding: 1rem;
     }
 
-    .search-form input {
-        font-size: 0.9rem;
+    .mobile-links {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        overflow-y: auto;
     }
 
     .mobile-link {
-        font-size: 1.4rem;
-        /* Scale down the giant mobile links */
+        font-family: 'Inter', sans-serif;
+        font-size: 1.1rem;
+        color: #111;
+        font-weight: 600;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #f4f4f4;
+        text-decoration: none;
     }
 }

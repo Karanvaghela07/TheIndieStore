@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
 import PremiumProductCard from '../components/PremiumProductCard';
 import DiscoverTriptych from '../components/DiscoverTriptych';
 import DiscoverPolaroids from '../components/DiscoverPolaroids';
@@ -10,18 +11,35 @@ import '../styles/shop.css';
 import '../styles/ajio-promos.css';
 
 const Shop = () => {
-    const [selectedCategory, setSelectedCategory] = useState('All');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const queryParams = new URLSearchParams(location.search);
+    const initialCategory = queryParams.get('category') || 'All';
+    const initialSearch = queryParams.get('search') || '';
+
+    const [selectedCategory, setSelectedCategory] = useState(initialCategory);
     const [priceRange, setPriceRange] = useState(1000);
     const [selectedSize, setSelectedSize] = useState('');
     const [sortBy, setSortBy] = useState('default');
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
-    const categoriesList = ['All', 'Accessories', 'Jewelry', 'Watches', 'Bags', 'Sale'];
+    // Sync selected category if URL changes
+    useEffect(() => {
+        const cat = new URLSearchParams(location.search).get('category') || 'All';
+        setSelectedCategory(cat);
+    }, [location.search]);
+
+    // Categories to show in the sidebar
+    const categoriesList = ['All', 'Women', 'Men', 'Kids', 'Footwear', 'Bags', 'Beauty', 'Home & Living', 'Sale', 'Tops', 'Bottoms', 'Outerwear', 'Accessories'];
     const sizes = ['OS'];
 
     useEffect(() => {
-        let result = products.filter(p => ['Accessories', 'Jewelry'].includes(p.category));
+        let result = [...products];
+
+        if (initialSearch) {
+            result = result.filter(p => p.name.toLowerCase().includes(initialSearch.toLowerCase()) || p.category.toLowerCase().includes(initialSearch.toLowerCase()));
+        }
 
         if (selectedCategory !== 'All') {
             if (selectedCategory === 'Sale') {
@@ -40,7 +58,7 @@ const Shop = () => {
         }
 
         setFilteredProducts(result);
-    }, [selectedCategory, priceRange, selectedSize, sortBy]);
+    }, [selectedCategory, priceRange, selectedSize, sortBy, initialSearch]);
 
     return (
         <div className="shop-page-standard" style={{ backgroundColor: '#fff' }}>
@@ -70,7 +88,10 @@ const Shop = () => {
                                             name="category"
                                             className="filter-checkbox"
                                             checked={selectedCategory === item}
-                                            onChange={() => setSelectedCategory(item)}
+                                            onChange={() => {
+                                                setSelectedCategory(item);
+                                                navigate(`/shop${item === 'All' ? '' : `?category=${encodeURIComponent(item)}`}`);
+                                            }}
                                         />
                                         {item}
                                     </label>

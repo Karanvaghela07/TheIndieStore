@@ -77,11 +77,11 @@ const HeroSlider = () => {
                                 />
                             </picture>
 
-                            {/* Text Overlay matching Souled Store */}
-                            <div className="hero-text-overlay">
-                                <span className="hero-slide-subtitle">{slides[currentIndex].subtitle}</span>
-                                <h2 className="hero-slide-title">{slides[currentIndex].title}</h2>
-                                <button className="hero-slide-btn">{slides[currentIndex].ctaText}</button>
+                            {/* Lifestyle Text Overlay */}
+                            <div className="lifestyle-hero-overlay">
+                                <span className="lifestyle-hero-subtitle">{slides[currentIndex].subtitle}</span>
+                                <h2 className="lifestyle-hero-title">{slides[currentIndex].title}</h2>
+                                <button className="lifestyle-btn solid">{slides[currentIndex].ctaText}</button>
                             </div>
                         </Link>
                     </motion.div>

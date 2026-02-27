@@ -1,19 +1,19 @@
 /* ==========================================================================
-   PRODUCT CARDS (AMAZON / FLIPKART STYLE)
+   PRODUCT CARDS (PREMIUM LIFESTYLE REDESIGN)
    ========================================================================== */
 
 /* Grid Layout */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     padding: 1rem 0;
 }
 
 @media (min-width: 768px) {
     .product-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
     }
 }
 
@@ -27,18 +27,18 @@
 @media (min-width: 1400px) {
     .product-grid {
         grid-template-columns: repeat(5, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
     }
 }
 
 /* Hybrid Card Style - Uniform Height */
 .az-product-card {
     background: #fff;
-    border: 1px solid #eee;
+    border: 1px solid transparent;
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -46,30 +46,32 @@
 }
 
 .az-product-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
-    border-color: #ddd;
-    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* Soft sexy shadow */
+    transform: translateY(-4px);
+    /* Slight lift */
 }
 
 /* Image Section */
 .az-image-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
-    /* Classic e-commerce square */
-    background: #f8f8f8;
+    aspect-ratio: 1 / 1.1;
+    /* Slightly taller for fashion */
+    background: #f7f8f7;
+    /* Very light cool grey */
     padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .az-product-img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     mix-blend-mode: multiply;
-    /* Helps blend standard white backgrounds */
 }
 
 /* Wishlist Button inside card */
@@ -78,27 +80,28 @@
     top: 10px;
     right: 10px;
     background: #fff;
-    border: 1px solid #ddd;
-    width: 32px;
-    height: 32px;
+    border: 1px solid transparent;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, color 0.2s;
     z-index: 2;
 }
 
 .az-wishlist-circle:hover {
-    transform: scale(1.1);
-    border-color: #111;
+    transform: scale(1.05);
+    color: #FAA61A;
+    /* Lifestyle Orange */
 }
 
 /* Info Section */
 .az-info-wrapper {
-    padding: 1rem;
+    padding: 1.2rem 1rem;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -107,10 +110,10 @@
 .az-brand {
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
-    color: #565959;
+    color: #777;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.3rem;
     font-weight: 600;
 }
 
@@ -132,7 +135,8 @@
 }
 
 .az-title:hover {
-    color: #c45500;
+    color: #FAA61A;
+    /* Lifestyle Orange hopver */
 }
 
 /* Ratings */
@@ -140,7 +144,7 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
 }
 
 .az-stars {
@@ -151,21 +155,21 @@
 .az-rating-count {
     font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
-    color: #007185;
+    color: #777;
 }
 
 /* Price */
 .az-price-row {
     display: flex;
     align-items: baseline;
-    gap: 0.25rem;
-    margin-bottom: 0.4rem;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
 }
 
 .az-price-row .currency {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
-    color: #0f1111;
+    color: #111;
     position: relative;
     top: -0.2rem;
 }
@@ -173,38 +177,32 @@
 .az-current-price {
     font-family: 'Inter', sans-serif;
     font-size: 1.25rem;
-    font-weight: 500;
-    color: #0f1111;
-    margin-right: 0.3rem;
+    font-weight: 700;
+    color: #111;
 }
 
 .az-mrp-price {
     font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    color: #565959;
+    font-size: 0.85rem;
+    color: #888;
     text-decoration: line-through;
 }
 
 .az-discount {
     font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    color: #00a854;
-    /* Clean Indie Green */
-    font-weight: 600;
-    margin-left: 0.3rem;
+    font-size: 0.85rem;
+    color: #FAA61A;
+    /* Orange discount highlight */
+    font-weight: 700;
 }
 
 /* Delivery String */
 .az-delivery {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    color: #0f1111;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
+    display: none;
+    /* Hide for cleaner lifestyle look */
 }
 
-/* Add to Cart Button - Indie Style */
+/* Add to Cart Button - Lifestyle Style */
 .az-add-cart-btn {
     margin-top: auto;
     /* Pushes button to bottom of card perfectly */
@@ -213,7 +211,7 @@
     border: 1px solid #111;
     border-radius: 4px;
     padding: 0.6rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -224,10 +222,9 @@
 }
 
 .az-add-cart-btn:hover {
-    background: #e11b23;
-    /* Flash of Indie Red on hover */
+    background: #FAA61A;
     color: #fff;
-    border-color: #e11b23;
+    border-color: #FAA61A;
 }
 
 /* ─── Mobile Responsiveness ─────────────────────────────────────────────── */

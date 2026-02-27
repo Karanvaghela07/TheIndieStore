@@ -1,0 +1,549 @@
+/* --- Shared Section Styles --- */
+.lifestyle-section {
+    padding: 3rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Headers */
+.section-header-center {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-header-center h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2b3e4f;
+    /* A slight slate blue-grey like the image */
+    margin-bottom: 0.5rem;
+}
+
+.section-header-center p {
+    font-size: 1.2rem;
+    color: #4a5c6a;
+    font-weight: 500;
+}
+
+.section-header-left {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.section-header-left h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.header-underline {
+    width: 40px;
+    height: 3px;
+    background-color: #FAA61A;
+    /* Lifestyle Orange */
+}
+
+/* Common Scroll Arrow Settings */
+.nav-arrow {
+    background: #fff;
+    color: #111;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transition: transform 0.2s;
+}
+
+.nav-arrow:hover {
+    transform: scale(1.05);
+}
+
+.nav-arrow.floating {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.nav-arrow.floating:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* --- 1. NEW SEASON (Light Blue Bg) --- */
+.new-season-section {
+    background-color: #e3f2fd;
+    /* Light baby blue like the screenshot */
+    padding: 3rem 1rem;
+}
+
+.new-season-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.new-season-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.new-season-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.new-season-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    display: block;
+}
+
+.ns-image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.ns-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.new-season-card:hover img {
+    transform: scale(1.05);
+}
+
+.ns-gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.ns-title {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+
+/* --- 2. FEATURED BRANDS --- */
+.feature-brands-section {
+    background: #fff;
+}
+
+.brands-scroll-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 1rem;
+}
+
+.brands-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-right: 3rem;
+    /* Space for the arrow */
+}
+
+.brands-track::-webkit-scrollbar {
+    display: none;
+}
+
+.brand-card {
+    flex: 0 0 calc(25% - 0.75rem);
+    /* roughly 4 items */
+    min-width: 280px;
+    height: 400px;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    display: block;
+}
+
+.brand-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.brand-card:hover img {
+    transform: scale(1.03);
+}
+
+.brand-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.brand-info {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    right: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #fff;
+}
+
+.b-name {
+    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    /* Scripty/serif looking brand names */
+    font-weight: 700;
+}
+
+.b-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1;
+}
+
+.b-price small {
+    font-size: 0.6rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+
+/* --- 3. CHARTBUSTERS --- */
+.chartbusters-section {
+    background: #fff;
+}
+
+.chartbusters-scroll-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.chartbusters-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-right: 3rem;
+}
+
+.chartbusters-track::-webkit-scrollbar {
+    display: none;
+}
+
+.chartbuster-card-wrapper {
+    flex: 0 0 16.66%;
+    /* roughly 6 items */
+    min-width: 190px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chartbuster-card {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.chartbuster-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.chartbuster-card-wrapper:hover .chartbuster-card img {
+    transform: scale(1.04);
+}
+
+.chartbuster-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.chartbuster-brand {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.cb-brand-name {
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.chartbuster-offer {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111;
+    margin-top: 0.2rem;
+}
+
+
+/* --- 4. CATEGORIES TO BAG --- */
+.categories-to-bag-section {
+    background: #f7f8fa;
+    /* Light grey block */
+}
+
+.categories-bag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.category-bag-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 140px;
+}
+
+.ctb-image-wrapper {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.ctb-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.category-bag-card:hover .ctb-image-wrapper img {
+    transform: scale(1.08);
+}
+
+.ctb-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+
+/* --- 5. TRENDING STYLES --- */
+.trending-styles-section {
+    background: #fff;
+}
+
+.trending-styles-layout {
+    display: flex;
+    gap: 2rem;
+    height: 600px;
+    /* fixed explicit height */
+}
+
+.ts-large-card {
+    flex: 2;
+    /* takes 2/3 of space */
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.ts-large-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.ts-large-card:hover img {
+    transform: scale(1.03);
+}
+
+.ts-content {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    background: #fff;
+    padding: 2rem;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.ts-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #111;
+}
+
+.ts-content p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+}
+
+.lifestyle-btn-outline {
+    /* new standalone outline button */
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #111;
+    color: #111;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.ts-large-card:hover .lifestyle-btn-outline {
+    background: #111;
+    color: #fff;
+}
+
+
+.ts-side-cards {
+    flex: 1;
+    /* takes 1/3 of space */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.ts-small-card {
+    flex: 1;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.ts-small-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.ts-small-card:hover img {
+    transform: scale(1.05);
+}
+
+.ts-content-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+}
+
+.ts-content-overlay h4 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+/* Mobile Adjustments Extended */
+@media (max-width: 1024px) {
+    .new-season-grid {
+        grid-template-columns: repeat(3, 300px);
+    }
+
+    .trending-styles-layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .ts-large-card {
+        aspect-ratio: 4/3;
+    }
+
+    .ts-side-cards {
+        flex-direction: row;
+    }
+
+    .ts-small-card {
+        aspect-ratio: 1/1;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-header-center h2 {
+        font-size: 2rem;
+    }
+
+    .ns-title {
+        font-size: 1.6rem;
+    }
+
+    .nav-arrow {
+        display: none;
+        /* Hide arrows on mobile, rely on scroll/swipe */
+    }
+
+    .brand-card {
+        flex: 0 0 70%;
+    }
+
+    .chartbuster-card-wrapper {
+        flex: 0 0 45%;
+    }
+
+    .ts-side-cards {
+        flex-direction: column;
+    }
+
+    .categories-bag-grid {
+        gap: 1rem;
+    }
+
+    .ctb-image-wrapper {
+        width: 110px;
+        height: 110px;
+    }
+}
