@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
@@ -11,17 +11,28 @@ import '../styles/product-detail.css';
 
 const ProductDetail = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [product, setProduct] = useState(null);
-    const { addToCart } = useCart();
+    const { addToCart, setCartOpen } = useCart();
     const { toggleWishlist, isInWishlist } = useWishlist();
     const [selectedSize, setSelectedSize] = useState('M');
     const [activeImage, setActiveImage] = useState(0);
 
     useEffect(() => {
         const found = products.find(p => p.id === parseInt(id));
-        if (found) setProduct(found);
+        if (found) {
+            setProduct(found);
+        } else {
+            navigate('/shop'); // Redirect if product ID doesn't exist
+        }
         window.scrollTo(0, 0);
-    }, [id]);
+    }, [id, navigate]);
+
+    const handleBuyNow = () => {
+        addToCart({ ...product, selectedSize });
+        setCartOpen(false); // don't keep the drawer open over the checkout page
+        navigate('/checkout');
+    };
 
     if (!product) return <div className="loading">Loading...</div>;
 
@@ -190,10 +201,10 @@ const ProductDetail = () => {
                         </div>
 
                         <div className="pdp-bb-actions">
-                            <button className="pdp-btn-flipkart-cart" onClick={() => addToCart(product)}>
+                            <button className="pdp-btn-flipkart-cart" onClick={() => addToCart({ ...product, selectedSize })}>
                                 Add to Cart
                             </button>
-                            <button className="pdp-btn-amazon-buy" onClick={() => addToCart(product)}>
+                            <button className="pdp-btn-amazon-buy" onClick={handleBuyNow}>
                                 Buy Now
                             </button>
                         </div>

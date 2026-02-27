@@ -81,7 +81,7 @@
 .pdp-gallery-main {
     flex: 1;
     background: #fff;
-    borderborder-radius: 4px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
