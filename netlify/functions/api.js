@@ -59,10 +59,25 @@ const Session = mongoose.models.Session || mongoose.model('Session', sessionSche
 function getBody(req) {
     let body = req.body;
 
+    console.log("=== DEBUG INCOMING REQUEST ===");
+    console.log("req.headers:", req.headers);
+    console.log("req.body initially (typeof " + typeof body + "):", body);
+    if (req.apiGateway && req.apiGateway.event) {
+        console.log("req.apiGateway.event.body (typeof " + typeof req.apiGateway.event.body + "):", req.apiGateway.event.body);
+        console.log("req.apiGateway.event.isBase64Encoded:", req.apiGateway.event.isBase64Encoded);
+    }
+
     // Fallback to raw event body (Netlify Serverless Specific)
     if (!body || Object.keys(body).length === 0) {
         if (req.apiGateway && req.apiGateway.event && req.apiGateway.event.body) {
             body = req.apiGateway.event.body;
+
+            // Decode Base64 if Netlify encoded it (common issue)
+            if (req.apiGateway.event.isBase64Encoded) {
+                console.log("Decoding Base64 body...");
+                body = Buffer.from(body, 'base64').toString('utf8');
+                console.log("Decoded Base64:", body);
+            }
         }
     }
 
@@ -70,11 +85,13 @@ function getBody(req) {
     if (typeof body === 'string') {
         try {
             body = JSON.parse(body);
+            console.log("Successfully parsed JSON string:", body);
         } catch (e) {
             // If it's URL encoded (e.g. name=Karan&email=test...), parse it manually
             const searchParams = new URLSearchParams(body);
             if (Array.from(searchParams.keys()).length > 0) {
                 body = Object.fromEntries(searchParams);
+                console.log("Successfully parsed URLSearchParams:", body);
             }
         }
     }
@@ -84,6 +101,7 @@ function getBody(req) {
         try { body = JSON.parse(body); } catch (e) { }
     }
 
+    console.log("FINAL PARSED BODY:", body);
     return body || {};
 }
 
