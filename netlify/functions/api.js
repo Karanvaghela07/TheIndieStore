@@ -83,7 +83,11 @@ function getBody(req) {
 
     // If the body is passed as a raw Buffer from Netlify (which happens with urlencoded)
     if (body && typeof body === 'object' && body.type === 'Buffer' && Array.isArray(body.data)) {
+        console.log("DETECTED BUFFER OBJECT - DECODING");
         body = Buffer.from(body.data).toString('utf8');
+    } else if (Buffer.isBuffer(body)) {
+        console.log("DETECTED RAW BUFFER - DECODING");
+        body = body.toString('utf8');
     }
 
     // Attempt to defensively parse strings if Netlify didn't format it as JSON
